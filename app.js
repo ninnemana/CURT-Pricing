@@ -12,9 +12,8 @@ var app = module.exports = express.createServer();
 var RedisStore = require('connect-redis')(express);
 
 if(process.env.REDISTOGO_URL){
-    var rtg = require('url').parse(process.env.REDISTOGO_URL);
-    redis = require('redis').createClient(rtg.port, rtg.hostname);
-    redis.auth = rtg.auth.split(':')[1];
+    var redis_url = require('url').parse(process.env.REDISTOGO_URL);
+    var redis_auth = redis_url.auth.split(':');
 }else{
     redis = require('redis').createClient();
 }
@@ -30,7 +29,10 @@ app.configure(function(){
     app.use(express.session({
         secret: process.env.CLIENT_SECRET || 'd0ughb0y',
         store: new RedisStore({
-            client: redis
+            host: redis_url.hostname,
+            port: redis_url.port,
+            db: redis_auth[0],
+            pass: redis_auth[1]
         })
     }));
     app.use(require('stylus').middleware({ src: __dirname + '/public' }));
