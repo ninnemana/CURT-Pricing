@@ -57,5 +57,5 @@ app.post('/upload', global_routes.do_upload);
 app.get('/:page?/:count?', global_routes.index);
 
 
-app.listen(3001);
+app.listen(process.env.PORT || 3001);
 console.log("Express server listening on port %d in %s mode", process.env.PORT || app.address().port, process.env.NODE_ENV || app.settings.env);
