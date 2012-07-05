@@ -1,0 +1,32 @@
+!!!
+html
+	head
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		title= title
+		link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+		link(rel='stylesheet', href='/stylesheets/bootstrap-responsive.min.css')
+		link(rel='stylesheet', href='/stylesheets/font-awesome.css')
+		link(rel='stylesheet', href='/stylesheets/tipsy.css')
+		link(rel='stylesheet', href='/stylesheets/style.css')
+		script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js')
+		script(type='text/javascript', src='/javascripts/bootstrap.min.js')
+
+	body
+		div.container
+			header
+				a.logo(href='/', title='CURT Manufacturing, LLC')
+					img(src='/img/logo.png')
+
+				span.sub-title Customer Cart Integration
+			section.content!= body
+
+			footer
+				div.info.span9
+					span Copyright &copy; 2012 CURT Manufacturing, LLC
+					span Developed By:
+						a(href='mailto:websupport@curtmfg.com', title='Support') Alex Ninneman
+
+				div.span2
+					img(src='/img/curtLogo_onWhite.png')
+		script(type='text/javascript', src='/javascripts/global.js')
+		script(type='text/javascript', src='/javascripts/jquery.tipsy.js')

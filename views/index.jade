@@ -1,0 +1,125 @@
+div.page-menu
+	div.pagination
+		ul
+			- for (var i = 1; i <= pages; ++i) {
+				if i == page
+					li.active
+						a(href='#')=i
+				else
+					li
+						a(href='/' + i)=i
+			- }
+
+	div.upload-btn
+		a.btn.btn-success.btn-large.mass-upload.tipsy(href='/upload',title='Mass Upload CSV')
+			i.icon-upload-alt.icon-large
+			span= " Mass Upload"
+
+div.clearfix
+blockquote Enter the appropriate product ID from your shopping cart into the Customer Part # column that matches the CURT product ID in the left column. Once you exit the textbox, the value will be updated automatically and you should see a green border around the box. If you see a red border around the box, something went wrong.
+
+table.table.table-bordered.table-striped.table-condensed
+	thead
+		tr
+			th Part #
+			th Customer Part #
+			th Selling Price
+			th Sale?
+			th Sale Start
+			th Sale End
+	tbody
+		each price in prices
+			tr(id=(price.isSale === 1)?price.partID + "_sale":price.partID)
+				td= price.partID
+				td
+					input.custPartID(type='number',data-partID=price.partID,value=price.custPartID)
+				td
+					span= '$' + parseFloat(price.price).toFixed(2)
+					i.icon-info-sign.icon-large.price.tipsy(title='Change Price')
+				td= (price.isSale === 0)? 'No': 'Yes'
+					if price.isSale === 0
+						i.icon-plus.icon-large.addSale.tipsy(title='Add Sale')
+					else
+						i.icon-edit.icon-large.editSale.tipsy(title='Edit Sale')
+				td= price.sale_start
+				td= price.sale_end
+
+div.pagination
+	ul
+		- for (var i = 1; i <= pages; ++i) {
+			if i == page
+				li.active
+					a(href='#')=i
+			else
+				li
+					a(href='/' + i)=i
+		- }
+
+input.customerID(type='hidden',value=customer.customerID)
+input.key(type='hidden',value=customer.key)
+
+div.modal.fade.hide#priceModal
+	div.modal-header
+		button.close(data-dismiss='modal',type='button') x
+		h3 Set your price for Part # 
+			span
+
+	div.modal-body
+		form.form-vertical.span3
+			label(for="custPrice") Enter the price you would like to sell at: 
+			input.custPrice#custPrice(type='number')
+		div.pricing.span2
+			h4 Pricing
+			div.progress.progress-striped.active
+				div.bar(style='width:100%')
+	div.modal-footer.well
+		a.btn(href='#', data-dismiss='modal') Close
+		a.btn.btn-primary.save(href='#') Save
+
+div.modal.fade.hide#saleModal
+	div.modal-header
+		button.close(data-dismiss='modal',type='button') x
+		h3 Set a Sale Price for Part #
+			span
+		div
+			small Current Price: 
+			strong
+				em
+
+	div.modal-body
+		form.form-inline.sale-form
+			label(for='custPrice') Enter the sale price:
+			input.salePrice#salePrice(type='number')
+
+			div
+				span.heading Enter Start Date
+
+				label(for='start_month')
+				input.span1.start_month#start_month(type='number', min='1', max='12', placeholder='01')
+				span /
+
+				label(for='start_day')
+				input.span1.start_day#start_day(type='number', min='1', max='31', placeholder='01')
+				span /
+
+				label(for='start_year')
+				input.span1.start_year#start_year(type='number', min='2012', max= new Date().getFullYear() + 25, placeholder= new Date().getFullYear())
+
+			div
+				span.heading Enter End Date
+
+				label(for='end_month')
+				input.span1.end_month#end_month(type='number', min='1', max='12', placeholder='01')
+				span /
+
+				label(for='end_day')
+				input.span1.end_day#end_day(type='number', min='1', max='31', placeholder='01')
+				span /
+
+				label(for='end_year')
+				input.span1.end_year#end_year(type='number', min='2012', max= new Date().getFullYear() + 25, placeholder= new Date().getFullYear())
+
+	div.modal-footer
+		a.btn.btn-danger.delete.left.hide(href="#") Delete Sale
+		a.btn(href='#', data-dismiss='modal') Close
+		a.btn.btn-primary.save(href='#') Save

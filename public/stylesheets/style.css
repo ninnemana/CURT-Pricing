@@ -1,0 +1,129 @@
+.align-left {
+  text-align: left;
+}
+.align-right {
+  text-align: right;
+}
+.align-center text-align center,
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+body {
+  background: url("/img/light_wool.png");
+}
+body div.container {
+  background: #f7f6f5;
+}
+body div.container header {
+  background: #343434;
+  border-top: 6px solid #e64d2c;
+  padding-bottom: 15px;
+  -webkit-box-shadow: 3px 3px 3px #343434;
+  -moz-box-shadow: 3px 3px 3px #343434;
+  -ms-box-shadow: 3px 3px 3px #343434;
+  -o-box-shadow: 3px 3px 3px #343434;
+  box-shadow: 3px 3px 3px #343434;
+}
+body div.container header a img {
+  width: 400px;
+}
+body div.container header span.sub-title {
+  color: #fff;
+  font-size: 20px;
+  margin-left: 15px;
+  position: relative;
+  top: 26px;
+}
+body div.container section.content {
+  min-height: 200px;
+  background: #fff;
+  -webkit-box-shadow: 3px 3px 3px #eaeaea;
+  -moz-box-shadow: 3px 3px 3px #eaeaea;
+  -ms-box-shadow: 3px 3px 3px #eaeaea;
+  -o-box-shadow: 3px 3px 3px #eaeaea;
+  box-shadow: 3px 3px 3px #eaeaea;
+  -webkit-border-radius: 0 0 3px 3px;
+  -moz-border-radius: 0 0 3px 3px;
+  -ms-border-radius: 0 0 3px 3px;
+  -o-border-radius: 0 0 3px 3px;
+  border-radius: 0 0 3px 3px;
+  padding: 50px;
+}
+body div.container section.content table tbody tr td input[type=number].warning {
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(255,192,0,0.6);
+  -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(255,192,0,0.6);
+  -ms-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(255,192,0,0.6);
+  -o-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(255,192,0,0.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(255,192,0,0.6);
+  border-color: rgba(255,192,0,0.8);
+}
+body div.container section.content table tbody tr td input[type=number].success {
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(91,183,91,0.6);
+  -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(91,183,91,0.6);
+  -ms-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(91,183,91,0.6);
+  -o-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(91,183,91,0.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(91,183,91,0.6);
+  border-color: rgba(91,183,91,0.8);
+}
+body div.container section.content table tbody tr td input[type=number].error {
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(218,79,73,0.6);
+  -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(218,79,73,0.6);
+  -ms-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(218,79,73,0.6);
+  -o-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(218,79,73,0.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(218,79,73,0.6);
+  border-color: rgba(218,79,73,0.8);
+}
+body div.container section.content table tbody tr td i {
+  margin-left: 5px;
+  cursor: pointer;
+  padding-top: 0;
+  z-index: 1000;
+}
+body div.container section.content div.page-menu {
+  margin: auto;
+  min-height: 100px;
+  text-align: right;
+}
+body div.container section.content div.page-menu div.pagination {
+  float: left;
+}
+body div.container section.content div.page-menu div.upload-btn {
+  float: right;
+  width: 100px;
+  height: 50px;
+}
+body div.container section.content div.page-menu a.tipsy {
+  z-index: 1000;
+}
+body div.container section.content div.page-menu i {
+  vertical-align: bottom;
+}
+body div.container section.content form.sale-form span.heading {
+  display: block;
+  border-bottom: 1px solid #eaeaea;
+  margin: 10px 0;
+}
+body div.container section.content form.sale-form input.span1 {
+  margin: 0 5px;
+}
+body div.container footer {
+  height: 60px;
+}
+body div.container footer div.info span {
+  display: block;
+  margin-top: 10px;
+  font-size: 10px;
+  line-height: 8px;
+  color: #aea79f;
+}
+body div.container footer div.info span a {
+  color: #000;
+  margin-left: 5px;
+}
+body div.container footer .span2 img {
+  margin-top: 10px;
+  width: 200px;
+}

@@ -1,0 +1,22 @@
+form.auth-form.span7(method='post', action='/login')
+	h1 Login to manage product integration
+
+	if typeof error !== 'undefined' && error.length > 0
+		div.alert.alert-error
+			a.close(data-dismiss='alert', href='#') x
+			h4.alert-heading Warning!
+			span= error
+
+	label(for='customerID') Enter Customer ID
+	input.span6#customerID(type='text', name='customerID', placeholder='Enter your customer identification number')
+
+	label(for='email') Enter Customer E-Mail
+	input.span6#email(type='email', name='email', placeholder='Enter the e-mail address associated with your account')
+
+	div.clearfix
+	input.btn.btn-large.btn-success(type='submit', value='Continue')
+
+div.span3
+	h1 Manage Pricing?
+	blockquote.pull-right This tool will allow you to set the pricing for individual products or do a mass file upload from CSV. You may also set sale pricing for individual products, set global pricing based off of list price, and integrated with a shopping cart on your current website.
+div.clearfix

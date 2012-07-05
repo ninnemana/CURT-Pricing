@@ -1,0 +1,5 @@
+form.form-horizontal.well(action='/upload',method='post',enctype='multipart/form-data')
+	label.control-label(for='file') Select File to upload
+	div.controls
+		input.input-file(type='file',name='file')
+		input.btn.btn-success.btn-large(type='submit',value='Upload')
