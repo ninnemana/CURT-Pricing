@@ -8,6 +8,7 @@
     , "jade": ">= 0.26.3"
     , "connect-redis": "1.4.0"
     , "csv": "0.0.15"
+    , "redis": "0.7.2"
   },
   "engines": {
   		"node": "0.8.0"
