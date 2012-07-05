@@ -2,7 +2,9 @@ var Customer = require('../models/Customer');
 
 exports.index = function(req, res){
 	var error = (req.query['error'])?req.query['error']:'';
-	req.session.customerID = 0;
+	if(req.session !== undefined){
+		req.session.customer = {};
+	}
 
 	res.render('auth/index', { title: 'CURT Manufacturing, LLC Price Management', locals: { error: error } });
 };

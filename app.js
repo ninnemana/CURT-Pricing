@@ -26,15 +26,23 @@ app.configure(function(){
     app.use(express.bodyParser());
     app.use(express.methodOverride());
     app.use(express.cookieParser());
-    app.use(express.session({
-        secret: process.env.CLIENT_SECRET || 'd0ughb0y',
-        store: new RedisStore({
-            host: redis_url.hostname,
-            port: redis_url.port,
-            db: redis_auth[0],
-            pass: redis_auth[1]
-        })
-    }));
+    if(redis_url && redis_auth){
+        app.use(express.session({
+            secret: process.env.CLIENT_SECRET || 'd0ughb0y',
+            store: new RedisStore({
+                host: redis_url.hostname,
+                port: redis_url.port,
+                db: redis_auth[0],
+                pass: redis_auth[1]
+            })
+        }));
+    }else{
+        app.use(express.session({
+            secret: process.env.CLIENT_SECRET || 'd0ughb0y',
+            store: new RedisStore()
+        }));
+    }
+
     app.use(require('stylus').middleware({ src: __dirname + '/public' }));
     app.use(express.static(__dirname + '/public'));
     app.use(app.router); // We have to place our router after our static directory, otherwise it won't pass
@@ -42,6 +50,7 @@ app.configure(function(){
 
 app.configure('development', function(){
     app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+    
 });
 
 app.configure('production', function(){
@@ -56,7 +65,11 @@ app.post('/login', auth_routes.login);
 
 
 var validate = function(req, res, next){
-    if(req.params[0] !== '/favicon.ico' && (!req.session.customer || req.session.customer.customerID === 0)){
+    if(req.params[0] === '/favicon.ico'){
+        next();
+    }
+
+    if(req.session.customer === undefined || req.session.customer.customerID === 0){
       res.redirect('/login');
     }else{
       next();
