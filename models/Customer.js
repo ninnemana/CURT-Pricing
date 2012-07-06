@@ -103,7 +103,6 @@ Customer.prototype = {
 				str += chunk;
 			});
 			res.on('end',function(){
-				console.log(str);
 				if(res.statusCode === 200){
 					callback(str);
 				}else{
