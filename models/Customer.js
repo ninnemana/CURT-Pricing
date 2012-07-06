@@ -1,7 +1,8 @@
 
 
 var http = require('http'),
-	qs = require('querystring');
+	qs = require('querystring'),
+	request = require('request');
 
 
 
@@ -156,6 +157,74 @@ Customer.prototype = {
 		});
 		req.write(data);
 		req.end();
+	},
+	processMassRow: function(data, customer){
+		var price = {
+			partID: data[0],
+			custPartID: data[1],
+			price: (data[2] !== undefined)? data[2] : 0,
+			sale_start: (data[3] !== undefined)? data[3] : '',
+			sale_end: (data[4] !== undefined)? data[4] : ''
+		};
+
+		var req_data = {
+			customerID: customer.customerID,
+			key: customer.key,
+			partID: price.partID,
+			customerPartID: (price.custPartID.length === 0)?0:price.custPartID,
+			price: price.price,
+			isSale: (price.sale_start !== null && price.sale_start.length > 0 && price.sale_end !== null && price.sale_end.length > 0)? 1: 0,
+			sale_start: price.sale_start,
+			sale_end: price.sale_end
+		};
+
+		var price_data = qs.stringify({
+			'customerID': req_data.customerID,
+			'key': req_data.key,
+			'partID': req_data.partID,
+			'price': req_data.price,
+			'isSale': req_data.isSale,
+			'sale_start': req_data.sale_start,
+			'sale_end': req_data.sale_end
+		});
+		
+		request({
+			method: 'POST',
+			url: 'http://api.curtmfg.com/v2/SetPrice',
+			headers: {'content-type': 'application/x-www-form-urlencoded'},
+			pool: 0,
+			body: price_data
+			},function(err, res, body){
+				if(err || res.statusCode !== 200){
+					console.log(err);
+					new Error(err);
+				}else{
+					console.log(body);
+				}
+			}
+		);
+
+		var iteg_data = qs.stringify({
+			'customerID': req_data.customerID,
+			'key': req_data.key,
+			'partID': req_data.partID,
+			'customerPartID': req_data.customerPartID
+		});
+		request({
+			method: 'POST',
+			url: 'http://api.curtmfg.com/v2/SetCustomerPart',
+			headers: {'content-type': 'application/x-www-form-urlencoded'},
+			pool: 0,
+			body: iteg_data
+			},function(err, res, body){
+				if(err || res.statusCode !== 200){
+					console.log(err);
+					new Error(err);
+				}else{
+					console.log(body);
+				}
+			}
+		);
 	}
 };
 
