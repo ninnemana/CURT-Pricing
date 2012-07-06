@@ -1,4 +1,9 @@
 form.form-horizontal.well(action='/upload',method='post',enctype='multipart/form-data')
+	div.alert
+		button.close(data-dismiss="alert") x
+		strong Warning!
+		p This section of the platform is still undergoing development
+	
 	label.control-label(for='file') Select File to upload
 	div.controls
 		input.input-file(type='file',name='file')

@@ -65,14 +65,14 @@ app.post('/login', auth_routes.login);
 
 
 var validate = function(req, res, next){
-    if(req.params[0] === '/favicon.ico'){
-        next();
-    }
-
-    if(req.session.customer === undefined || req.session.customer.customerID === 0){
-      res.redirect('/login');
+    if(req.params[0] !== '/favicon.ico' && (req.session.customer === undefined || req.session.customer.customerID === 0)){
+        res.redirect('/login');
     }else{
-      next();
+        if(req.params[0] === '/favicon.ico'){
+            res.end();
+        }else{
+            next();
+        }
     }
 };
 

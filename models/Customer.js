@@ -75,6 +75,84 @@ Customer.prototype = {
 
 			callback([]);
 		}).end();
+	},
+	submitPrice: function(price,callback){
+		var data = qs.stringify({
+			'customerID': price.customerID,
+			'key': price.key,
+			'partID': price.partID,
+			'price': price.price,
+			'isSale': price.isSale,
+			'sale_start': price.sale_start,
+			'sale_end': price.sale_end
+		});
+		var opts = {
+			host: 'api.curtmfg.com',
+			port: '80',
+			path: '/v2/SetPrice',
+			method: 'POST',
+			headers:{
+				'Content-Type': 'application/x-www-form-urlencoded',
+				'Content-Length': data.length
+			}
+		};
+
+		var req = http.request(opts, function(res){
+			var str = '';
+			res.on('data',function(chunk){
+				str += chunk;
+			});
+			res.on('end',function(){
+				console.log(str);
+				if(res.statusCode === 200){
+					callback(str);
+				}else{
+					callback('Failed to submit record');
+				}
+			});
+		}).on('error',function(e){
+			error = e.message;
+			callback(error);
+		});
+		req.write(data);
+		req.end();
+	},
+	submitIntegration: function(price,callback){
+		var data = qs.stringify({
+			'customerID': price.customerID,
+			'key': price.key,
+			'partID': price.partID,
+			'customerPartID': price.customerPartID
+		});
+		var opts = {
+			host: 'api.curtmfg.com',
+			port: '80',
+			path: '/v2/SetCustomerPart',
+			method: 'POST',
+			headers:{
+				'Content-Type': 'application/x-www-form-urlencoded',
+				'Content-Length': data.length
+			}
+		};
+
+		var req = http.request(opts, function(res){
+			var str = '';
+			res.on('data',function(chunk){
+				str += chunk;
+			});
+			res.on('end',function(){
+				if(res.statusCode === 200){
+					callback(str);
+				}else{
+					callback('Failed to submit record');
+				}
+			});
+		}).on('error',function(e){
+			error = e.message;
+			callback(error);
+		});
+		req.write(data);
+		req.end();
 	}
 };
 
