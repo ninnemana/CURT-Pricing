@@ -62,6 +62,7 @@ app.configure('production', function(){
 // Authentication
 app.get('/login', auth_routes.index);
 app.post('/login', auth_routes.login);
+app.get('/logout', auth_routes.logout);
 
 
 var validate = function(req, res, next){
