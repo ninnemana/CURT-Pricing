@@ -1,10 +1,23 @@
-form.form-horizontal.well(action='/upload',method='post',enctype='multipart/form-data')
-	div.alert
-		button.close(data-dismiss="alert") x
-		strong Warning!
-		p This section of the platform is still undergoing development
-	
-	label.control-label(for='file') Select File to upload
-	div.controls
-		input.input-file(type='file',name='file')
-		input.btn.btn-success.btn-large(type='submit',value='Upload')
+div.alert
+	button.close(data-dismiss="alert") x
+	strong Warning!
+	p This section of the platform is still undergoing development
+
+div.row
+	div.span6	
+		form.form-horizontal.well(action='/upload',method='post',enctype='multipart/form-data')
+
+			label.control-label(for='file') Select File to upload
+			div.controls
+				input.input-file(type='file',name='file')
+				input.btn.btn-success.btn-large(type='submit',value='Upload')
+		a.tipsy.btn.btn-mini(href='/download', title='Download Current Data')
+			i.icon-download-alt
+			|  Download Data
+	div.span4
+		blockquote
+			span Please download your current data using the link to the left. Make your changes and then upload them. The "List Price" field is only for your reference and cannot be changed.
+			br 
+			span Your CSV file can contain a heading row, but it's not necessary.
+			br 
+			span Once the upload has completed you will be redirected to the Integration Console where you can validate that the upload completed correctly.

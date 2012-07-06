@@ -83,6 +83,7 @@ app.get('*', validate);
 // Available routes once authed
 app.get('/upload', global_routes.upload);
 app.post('/upload', global_routes.do_upload);
+app.get('/download',global_routes.get_csv);
 app.get('/:page?/:count?', global_routes.index);
 
 
