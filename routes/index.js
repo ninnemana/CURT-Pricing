@@ -1,5 +1,3 @@
-var profiler = require('v8-profiler');
-
 var Customer = require('../models/Customer'),
 	csv = require('csv');
 
