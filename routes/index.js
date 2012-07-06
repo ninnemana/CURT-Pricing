@@ -52,13 +52,13 @@ exports.do_upload = function(req, res){
 		}).on('data',function(data,index){
 			var cust = new Customer();
 			var price, req_data;
-			if(!isNaN(data[0])){
+			if(!isNaN(data[0]) && data[0] !== undefined && data[0].length > 0){
 				price = {
 					partID: data[0],
 					custPartID: data[1],
-					price: data[2],
-					sale_start: data[3],
-					sale_end: data[4]
+					price: (data[2] !== undefined)? data[2] : 0,
+					sale_start: (data[3] !== undefined)? data[3] : '',
+					sale_end: (data[4] !== undefined)? data[4] : ''
 				};
 
 				req_data = {
