@@ -1,7 +1,4 @@
 
-/**
- * Module dependencies.
- */
 
 var express = require('express'),
     auth_routes = require('./routes/auth'),
