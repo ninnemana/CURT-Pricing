@@ -70,9 +70,7 @@ exports.do_upload = function(req, res){
 				}*/
 			}
 			console.log('attempting redirect');
-			res.redirect('/1');
-			res.end();
-
+			res.redirect('home');
 		}).on('error',function(error){
 			//res.redirect('/upload?error=' + error.message);
 			error += error.message;
