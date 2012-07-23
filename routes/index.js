@@ -60,8 +60,11 @@ exports.do_upload = function(req, res){
 				var cust = new Customer(),
 					data = prices[i];
 				if(!isNaN(data[0]) && data[0] !== undefined && data[0].length > 0){
-					console.log('firing push:', data);
 					cust.processMassRow(data, req.session.customer);
+				}
+
+				if(i === prices.length - 1){
+					res.redirect('/');
 				}
 			}
 		}).on('error',function(error){
