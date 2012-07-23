@@ -62,8 +62,9 @@ exports.do_upload = function(req, res){
 				if(!isNaN(data[0]) && data[0] !== undefined && data[0].length > 0){
 					cust.processMassRow(data, req.session.customer);
 				}
-
+				console.log(prices.length, i);
 				if(i === prices.length - 1){
+					console.log('attempting redirect');
 					res.redirect('/');
 				}
 			}

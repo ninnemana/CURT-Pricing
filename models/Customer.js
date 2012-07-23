@@ -196,11 +196,8 @@ Customer.prototype = {
 			body: price_data
 			},function(err, res, body){
 				if(err || res.statusCode !== 200){
-					console.log(err);
 					new Error(err);
-				}else{
-					console.log(body);
-				}
+				}else{}
 			}
 		);
 
@@ -218,11 +215,8 @@ Customer.prototype = {
 			body: iteg_data
 			},function(err, res, body){
 				if(err || res.statusCode !== 200){
-					console.log(err);
 					new Error(err);
-				}else{
-					console.log(body);
-				}
+				}else{ }
 			}
 		);
 	}
