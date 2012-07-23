@@ -63,7 +63,7 @@ exports.do_upload = function(req, res){
 					cust.processMassRow(data, req.session.customer);
 				}
 				console.log(prices.length, i);
-				if(i === prices.length){
+				if(i === prices.length - 1){
 					console.log('attempting redirect');
 					res.redirect('/');
 					res.end();
