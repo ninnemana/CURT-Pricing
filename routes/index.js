@@ -63,15 +63,15 @@ exports.do_upload = function(req, res){
 					cust.processMassRow(data, req.session.customer);
 				}
 				console.log(prices.length, i);
-				/*if(i === prices.length - 1){
+				if(i === prices.length - 1){
 					console.log('attempting redirect');
-					res.redirect('/');
+					res.redirect('back');
 					res.end();
-				}*/
+				}
 			}
-			console.log('attempting redirect');
+			/*console.log('attempting redirect');
 			res.redirect('back');
-			res.end();
+			res.end();*/
 		}).on('error',function(error){
 			//res.redirect('/upload?error=' + error.message);
 			error += error.message;

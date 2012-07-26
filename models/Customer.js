@@ -72,6 +72,7 @@ Customer.prototype = {
 			});
 
 			res.on('end',function(){
+				console.log(str);
 				var prices = JSON.parse(str);
 
 				callback(prices);
@@ -214,6 +215,7 @@ Customer.prototype = {
 			pool: 0,
 			body: iteg_data
 			},function(err, res, body){
+				console.log(body);
 				if(err || res.statusCode !== 200){
 					new Error(err);
 				}else{ }
