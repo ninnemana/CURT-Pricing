@@ -62,7 +62,6 @@ exports.do_upload = function(req, res){
 				if(!isNaN(data[0]) && data[0] !== undefined && data[0].length > 0){
 					cust.processMassRow(data, req.session.customer);
 				}
-				console.log(prices.length, i);
 				if(i === prices.length - 1){
 					console.log('attempting redirect');
 					res.redirect('back');
@@ -96,7 +95,6 @@ exports.get_csv = function(req, res){
 			}
 			
 		}).on('end',function(count){
-			console.log(count, process.stdout);
 			res.contentType('text/csv');
 			res.header("Content-Disposition", "attachmentl;filename=data.csv");
 			res.write(stream);
