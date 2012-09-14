@@ -55,7 +55,6 @@ exports.do_upload = function(req, res){
 		}).on('data',function(data,index){
 			prices.push(data);
 		}).on('end',function(count){
-			console.log(prices);
 			for(i = 0; i < prices.length; i++){
 				var cust = new Customer(),
 					data = prices[i];
